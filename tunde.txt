@@ -1,2 +1,0 @@
-Welcome to github class where we learn how to use python
-
