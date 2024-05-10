@@ -24,24 +24,29 @@ while True:
             d to deposit
             w to withdraw
             q to quit
-    ''')
+    ''').lower()
     if mychoice == 'b':
         print(balance)
 
     elif mychoice == 'd':
         amount=float(input('Enter Amount'))
-        print(f'Your current balance is: {balance + amount}')
-        totalbalance = balance + amount
+        balance += amount
+        print(f'successfull and your new balalce is {amount}')
+        if amount <= 0 :
+            print('Invalid transaction')
+     
+            
     elif mychoice == 'w':
         amount=float(input('Enter Amount'))
-        if amount > totalbalance:
-            print('Insufficient fund')
+        if amount <= balance:
+            balance -= amount
+            print('successfull')
         else:
-            print('transactioin successfull.')
+            print('insufficient')
             
-        print(f'Your current balance is: {totalbalance - amount}')
+    
     elif mychoice == 'q':
         print('Thanks for banking with us')
         exit()
-
-
+    else:
+    print('invalid request')
