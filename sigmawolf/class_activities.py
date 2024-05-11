@@ -207,52 +207,52 @@
 
 # -------------------------------------CLASS
 
-pin = 1234
-card_number = 333322224444
-balance = 1000
-cmd = ""
-print('Welcome to Digital Fortress MFB')
-card_pin = int(input('Enter pin > '))
-if card_pin == pin:
-    card_no_ver = int(input("Confirm account number > "))
-    if card_no_ver == 333322224444:
-        name = input('Enter name > ')
-        print(f'Hello {name}!\n Choose your option: '
-              f'\n C-Check Balance\n D-Deposit\n W-Withdraw\n B-Back\n Q-Quit')
-    else:
-        print('Invalid')
-        exit()
-
-while True:
-    cmd = input('> ').upper()
-    if cmd == "D":
-        new_deposit = float(input('Enter the amount: '))
-        balance += new_deposit
-        print("Successful!\nYour new balance is: N{:,.2f}".format(new_deposit))
-        print("B.Back\nQ.Quit")
-
-    elif cmd == "W":
-        withdrawal = float(input('Enter amount: '))
-        if withdrawal <= balance:
-            balance -= withdrawal
-            print("Withdrawal Successful")
-            print("B.Back\nQ.Quit")
-
-        else:
-            print('Insufficient funds')
-            print("B.Back\nQ.Quit")
-
-    elif cmd == "C":
-        print("Your current balance is: {:,.2f}".format(balance))
-        print("D.Deposit\nW.Withdraw\nB.Back\nQ.Quit")
-
-    elif cmd == "B":
-        print(f'Choose your option: '
-              f'\n C-Check Balance\n D-Deposit\n W-Withdraw\n B-Back\n Q-Quit')
-
-    elif cmd == "Q":
-        print('Thank you for banking with us')
-        break
+# pin = 1234
+# card_number = 333322224444
+# balance = 1000
+# cmd = ""
+# print('Welcome to Digital Fortress MFB')
+# card_pin = int(input('Enter pin > '))
+# if card_pin == pin:
+#     card_no_ver = int(input("Confirm account number > "))
+#     if card_no_ver == 333322224444:
+#         name = input('Enter name > ')
+#         print(f'Hello {name}!\n Choose your option: '
+#               f'\n C-Check Balance\n D-Deposit\n W-Withdraw\n B-Back\n Q-Quit')
+#     else:
+#         print('Invalid')
+#         exit()
+#
+# while True:
+#     cmd = input('> ').upper()
+#     if cmd == "D":
+#         new_deposit = float(input('Enter the amount: '))
+#         balance += new_deposit
+#         print("Successful!\nYour new balance is: N{:,.2f}".format(new_deposit))
+#         print("B.Back\nQ.Quit")
+#
+#     elif cmd == "W":
+#         withdrawal = float(input('Enter amount: '))
+#         if withdrawal <= balance:
+#             balance -= withdrawal
+#             print("Withdrawal Successful")
+#             print("B.Back\nQ.Quit")
+#
+#         else:
+#             print('Insufficient funds')
+#             print("B.Back\nQ.Quit")
+#
+#     elif cmd == "C":
+#         print("Your current balance is: {:,.2f}".format(balance))
+#         print("D.Deposit\nW.Withdraw\nB.Back\nQ.Quit")
+#
+#     elif cmd == "B":
+#         print(f'Choose your option: '
+#               f'\n C-Check Balance\n D-Deposit\n W-Withdraw\n B-Back\n Q-Quit')
+#
+#     elif cmd == "Q":
+#         print('Thank you for banking with us')
+#         break
 
 # ------------------------------------
 
@@ -295,3 +295,89 @@ while True:
 #     elif mychoice == 'q':
 #         print('Thanks for banking with us')
 #         exit()
+
+# ---------------------------------Dictionary
+# employee = {
+#     'name': 'Emeka',
+#     'state': 'Lagos',
+#     'lga': 'Eti-osa'
+# }
+# print(type(employee))
+# print(employee['name'])
+# print(employee.get('lga'))
+# print(employee.keys())
+# print(employee.values())
+# employee['email'] = 'emeka@gmail.com'
+# employee.update({'city':'Akowonjo'})
+# employee.pop('name')  # This deletes the name from the dictionary.
+# employee.popitem()
+# print(employee)
+# del employee  # deletes employee data.
+# employee.clear()
+
+# ----------------------Set - Set is used to save unique datas. It counts duplicate as one.
+# score = {10, 20, 10, 40, 60, 30, 20}
+# score = {10, 20, 10, 40, 60, 30, 20, 'banana', True, 1, False, 0}  # - Nb: 1 = True and Zero = False
+# mycolor = {'black', 'yellow', 'red'}
+# colors = {'blue', 'purple', 'black'}
+# print(score)
+# print(len(score))  # len  is used to count.
+# print(10 in score)  # This should give a True/false answer.
+# x = 10 in score
+# print(x)
+# score.add('orange')   # The '.add' function add an item to a set.
+# my_color = score.union(colors)  # The '.union' function joins list together.
+# my_color = score | colors  # The '|' also joins.
+# score.remove('banana')  # The '.remove' function removes an item from the list.
+# x = mycolor ^ colors  # The '^' set opeartion will help print out what we have in both elements but not common in both.
+# x = mycolor & colors  # The '&' sign gives us the item 2 sets have in common.
+# x = mycolor.intersection(colors)  # The '.intersection' function is an inbuilt function that also gives us item common in 2 sets.
+# x = mycolor.intersection_update(colors)  # The '.intersection_update' function is an inbuilt function that also gives us item common in 2 sets.
+# mycolor.difference(colors)  # The '.difference.' function remove the items that 2 sets don't have in common and print out what they have in common.
+# mycolor.difference_update(colors)
+# x = mycolor - colors
+# x = mycolor == colors  # This should print either True or False.
+# print(score)
+# print(my_color)
+# print(x)
+# print(x)
+
+# ------------------------- Functions
+# first class citizens function in Python are called 'def'
+# e.g.
+# def greetings():
+#     print("Hello Class")
+#
+# greetings()
+
+# functions by parameters
+# e.g.
+# def tunde(x, y):
+#     return x + y
+#
+# print(tunde(50, 50))
+
+# Exercise:
+# Create a program with a function that takes 2 values from a user (first name and last name).
+
+# def greetings():
+#     print('Welcome')
+
+# greetings()
+
+# def bio(f, l):
+#     return f + l
+#
+# print("Welcome", + bio(f=input('Enter first name: '), l=input('Enter last name: ')))
+
+
+# Create a function that helps to take a user's name and print out the first 3 letters.
+
+# def count():
+#     x = input('Enter your name > ')
+#     y = x[0: 3]
+#     print(y)
+# count()
+
+
+# --------------------Assignment.
