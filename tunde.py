@@ -16,7 +16,7 @@ else:
     print('Invalid')
     exit()
 user =input('Enter your name')
-print(f'Welcome Mr/Mrs/Miss {user} you current balance is {balance} ')
+print(f'Welcome Mr/Mrs/Miss {user} you current balance is {balance}')
 newbalance = False
 while True:
     mychoice = input('''
