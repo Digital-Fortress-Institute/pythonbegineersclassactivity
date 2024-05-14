@@ -52,11 +52,11 @@
 #         print('invalid request')
 
 
-employee =  {
-    'name': 'emeka',
-    'state':'Lagos',
-    'lga': 'Eti-osa'
-}
+# employee =  {
+#     'name': 'emeka',
+#     'state':'Lagos',
+#     'lga': 'Eti-osa'
+# }
 # print(type(employee))
 # print(employee["name"])
 # print(employee.get('lga'))
@@ -73,8 +73,8 @@ employee =  {
 
 # set
 # score = { 10, 20, 10, 40, 60, 'banana', 30, 20, True, 1, False, 0}
-mycolor = {'black', 'yellow', 'red', 'purple'}
-colors = ( 'blue', 'purple', 'black', 'yellow')
+# mycolor = {'black', 'yellow', 'red', 'purple'}
+# colors = ( 'blue', 'purple', 'black', 'yellow')
 # x = 10 not in score
 # score.add('orange')
 # mycolor = score.union(colors)
