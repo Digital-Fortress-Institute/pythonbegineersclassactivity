@@ -122,3 +122,48 @@
 #     y = x[0: 3]
 #     print(y)
 # count()
+
+
+
+# myset = {'orange', 'blue' , 'green'}
+# newset= {'purple', 'green'}
+# set3=myset.intersection(newset)
+# print(set3)
+# print(myset|newset)
+# print(newset^myset)
+# print(newset&myset)
+
+
+# def merge_set(set1, set2):
+#     return set1, set2
+
+set1={1,2,3,4}
+
+set2 = {1,2,3,4}
+# x = set1.issuperset(set2)
+# print(x)
+# print(len(set2))
+# myset=9
+# x =myset in set2
+# print(x)
+# x = set1.isdisjoint(set2)
+# print(x)
+
+
+# x =set1.issubset(set2)
+# print(x)
+# print(set1.union(set2))
+# print(set1.difference(set2))
+# print(set1^set2) 
+
+x = [20, 10, 40, 60, 30, 70, 25, 75, 21, 53]
+myx = list(map( lambda y: y % 5 == 0, x))
+# myx = lambda y : y + y
+print(myx)
+
+
+
+
+
+
+
