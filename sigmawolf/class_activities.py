@@ -381,3 +381,33 @@
 
 
 # --------------------Assignment.
+# operator = ""
+# while True:
+#     print('Operators available for this calculator are:\nD-Divide\nM-Multiply\nA-Addition\nS-Subtract')
+#     value_1 = float(input('>'))
+#     value_2 = float(input('>'))
+#     value_3 = float(input('>'))
+#     value_4 = float(input('>'))
+
+
+operations = {
+    '+': lambda x, y: x + y,
+    '-': lambda x, y: x - y,
+    '*': lambda x, y: x * y,
+    '/': lambda x, y: x / y if y != 0 else "Cannot divide by zero",
+    '%': lambda x, y: (x * y) / 100
+}
+
+print("Select operation: +, -, *, /, %")
+
+while True:
+    operator = input("Enter operator: ")
+
+    if operator in operations:
+        num1, num2 = map(float, input("Enter two numbers separated by space: ").split())
+        print("Result:", operations[operator](num1, num2))
+
+        if input("Do you want to perform another calculation? (yes/no): ").lower() != 'yes':
+            break
+    else:
+        print("Invalid operator")
