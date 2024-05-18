@@ -2,33 +2,33 @@
 # card_number=8659036754
 # balance = 0
 
-<<<<<<< HEAD
-print('Welcome to Digital Fortress Micro Finance Bank')
-card_pin=int(input('Please enter your pin  \n'))
-if card_pin == pin:
-    print('Welcome')
-else:
-    print('Invalid')
-    exit()
-mycard_number=int(input('Please enter your card number  \n'))
-if mycard_number == card_number:
-    print('Welcome')
-else:
-    print('Invalid')
-    exit()
-user =input('Enter your name')
-print(f'Welcome Mr/Mrs/Miss {user} you current balance is {balance}')
-newbalance = False
-while True:
-    mychoice = input('''
-            b to check balance
-            d to deposit
-            w to withdraw
-            q to quit
-    ''')
-    if mychoice == 'b':
-        print(balance)
-=======
+
+# print('Welcome to Digital Fortress Micro Finance Bank')
+# card_pin=int(input('Please enter your pin  \n'))
+# if card_pin == pin:
+#     print('Welcome')
+# else:
+#     print('Invalid')
+#     exit()
+# mycard_number=int(input('Please enter your card number  \n'))
+# if mycard_number == card_number:
+#     print('Welcome')
+# else:
+#     print('Invalid')
+#     exit()
+# user =input('Enter your name')
+# print(f'Welcome Mr/Mrs/Miss {user} you current balance is {balance}')
+# newbalance = False
+# while True:
+#     mychoice = input('''
+#             b to check balance
+#             d to deposit
+#             w to withdraw
+#             q to quit
+#     ''')
+#     if mychoice == 'b':
+#         print(balance)
+# =======
 # print('Welcome to Digital Fortress Micro Finance Bank')
 # card_pin=int(input('Please enter your pin  \n'))
 # if card_pin == pin:
@@ -54,7 +54,7 @@ while True:
 #     ''').lower()
 #     if mychoice == 'b':
 #         print(balance)
->>>>>>> 166403d2445d57a2aba99ce7e33ba78365dcbe00
+# >>>>>>> 166403d2445d57a2aba99ce7e33ba78365dcbe00
 
 #     elif mychoice == 'd':
 #         amount=float(input('Enter Amount'))
@@ -165,9 +165,9 @@ while True:
 # def merge_set(set1, set2):
 #     return set1, set2
 
-set1={1,2,3,4}
+# set1={1,2,3,4}
 
-set2 = {1,2,3,4}
+# set2 = {1,2,3,4}
 # x = set1.issuperset(set2)
 # print(x)
 # print(len(set2))
@@ -184,13 +184,29 @@ set2 = {1,2,3,4}
 # print(set1.difference(set2))
 # print(set1^set2) 
 
-x = [20, 10, 40, 60, 30, 70, 25, 75, 21, 53]
-myx = list(map( lambda y: y % 5 == 0, x))
-# myx = lambda y : y + y
-print(myx)
+# x = [20, 10, 40, 60, 30, 70, 25, 75, 21, 53]
+# myx = list(map( lambda y: y % 5 == 0, x))
+# # myx = lambda y : y + y
+# print(myx)
 
 
+# handling of errors which is mostly used by try and except
 
+
+def mynumber(num1, num2):
+    try:
+        return num1 + num2
+    # except TypeError:
+    #     return ('Value must be an interger')
+    # except NameError:
+    #     return ('parameter does not exixt')
+    except Exception as e:
+        return e
+
+
+print(mynumber(10, 30))
+print(mynumber('a', 10))
+print('Success')
 
 
 
