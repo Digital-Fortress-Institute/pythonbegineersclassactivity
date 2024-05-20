@@ -391,23 +391,40 @@
 
 
 operations = {
-    '+': lambda x, y: x + y,
-    '-': lambda x, y: x - y,
-    '*': lambda x, y: x * y,
-    '/': lambda x, y: x / y if y != 0 else "Cannot divide by zero",
-    '%': lambda x, y: (x * y) / 100
+    'A': lambda x, y: x + y,
+    'S': lambda x, y: x - y,
+    'M': lambda x, y: x * y,
+    'D': lambda x, y: x / y if y != 0 else "Cannot divide by zero",
+    'P': lambda x, y: (x * y) / 100
 }
 
-print("Select operation: +, -, *, /, %")
+print("Select operation:\nA - Addition\nS - Subtraction\nM - Multiplication\nD - Division\nP - Percentage")
+
 
 while True:
-    operator = input("Enter operator: ")
+    operator = input("Enter operator: ").upper()
+    try:
+        if operator in operations:
+            num1, num2 = map(float, input("Enter two numbers separated by space: ").split())
+            print("Result:", operations[operator](num1, num2))
 
-    if operator in operations:
-        num1, num2 = map(float, input("Enter two numbers separated by space: ").split())
-        print("Result:", operations[operator](num1, num2))
+            if input("Do you want to perform another calculation? (Y/N): ").lower() != 'y':
+                break
+        else:
+            print("Invalid operator")
+    except (ValueError, TypeError, ZeroDivisionError):
+        print('Your value is invalid')
 
-        if input("Do you want to perform another calculation? (yes/no): ").lower() != 'yes':
-            break
-    else:
-        print("Invalid operator")
+# from tkinter import *
+#
+# root = Tk()
+# root.title('User Interface')
+# root.geometry('1000x600')
+# label = Label(root, text="Name")
+# label.grid(row=0, column=0)  # This sets the alignment of the labels.
+# entry = Entry(root, width=60)
+# entry.grid(row=0, column=1)  # This function creates a space for users to enter their values.
+# mybutton = Button(root, text='Submit')
+# mybutton.grid(row=1, column=0, padx=20, pady=10)  # The 'padx' & 'pady' function is used for padding (i.e. spacing).
+# label.pack() # This function help display the labels on the GUI.
+# root.mainloop()  # Without this you wont see your GUI.
