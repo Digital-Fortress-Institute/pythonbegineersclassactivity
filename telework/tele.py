@@ -44,46 +44,46 @@
 #         print('Thanks for banking with us')
 #         exit()
 
-# def calculator(x, y, v):
-#         if v == "A":
-#             print(f"The addition of {x} and {y} is: {x + y}")
-#         elif v == "S":
-#             print(f"The Subtraction of {x} and {y} is: {x - y}")
-#         elif v == "D":
-#             if y == 0:
-#                 print("Error: Division by zero is not allowed.")
-#             else:
-#                 print(f"The Division of {x} and {y} is: {x / y}")
-#         elif v == "M":
-#             print(f"The Multiply of {x} and {y} is: {x * y}")
-#         else:
-#             print(f'"{v}" is not an option for an Operator')
+def calculator(x, y, v):
+        if v == "A":
+            print(f"The addition of {x} and {y} is: {x + y}")
+        elif v == "S":
+            print(f"The Subtraction of {x} and {y} is: {x - y}")
+        elif v == "D":
+            if y == 0:
+                print("Error: Division by zero is not allowed.")
+            else:
+                print(f"The Division of {x} and {y} is: {x / y}")
+        elif v == "M":
+            print(f"The Multiply of {x} and {y} is: {x * y}")
+        else:
+            print(f'"{v}" is not an option for an Operator')
 
-# while True:
-#     print('''Use this calculator to Add, Subtract, Divide and Multiply:
-#         Choose "A" to Add,
-#                 "S" to Subtract,
-#                 "D" to Divide,
-#                 "M" to Multiply,
-#         your two values''')
+while True:
+    print('''Use this calculator to Add, Subtract, Divide and Multiply:
+        Choose "A" to Add,
+                "S" to Subtract,
+                "D" to Divide,
+                "M" to Multiply,
+        your two values''')
 
-#     calculator(int(input("Enter your first value:\n")), int(input("Enter your second value:\n")), input("Enter your operator to calculate:\n").upper())
+    calculator(int(input("Enter your first value:\n")), int(input("Enter your second value:\n")), input("Enter your operator to calculate:\n").upper())
 
 
-mycolor = {'black', 'yellow', 'red', 'purple'}
-colors = { 'blue', 'purple', 'black', 'yellow'}
+# mycolor = {'black', 'yellow', 'red', 'purple'}
+# colors = { 'blue', 'purple', 'black', 'yellow'}
 #1
 # Write a Python program to find the common elements between two sets.
-x = mycolor & colors
-print(x)
+# x = mycolor & colors
+# print(x)
 
 # 2.Write a Python program to merge two sets without duplicates.
-merged_set = mycolor.union(colors)
-print("Merged set without duplicates:", merged_set)
+# merged_set = mycolor.union(colors)
+# print("Merged set without duplicates:", merged_set)
 
 # 3.Write a Python program to find the elements that are present in the first set but not in the second set.
-elements_only_in_mycolor = mycolor.difference(colors)
-print("Elements present in mycolor but not in colors:", elements_only_in_mycolor)
+# elements_only_in_mycolor = mycolor.difference(colors)
+# print("Elements present in mycolor but not in colors:", elements_only_in_mycolor)
 
 
 # 4.Write a Python program to find the elements that are present in either set but not in both.
