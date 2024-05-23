@@ -226,6 +226,7 @@
 # root.mainloop()
 
 from tkinter import *
+from tkinter import messagebox
 import sqlite3
 def create_table():
     tunde = sqlite3.connect(
@@ -257,21 +258,28 @@ def myclick():
     result1.pack()
     result2= Label(root, text=password)
     result2.pack()
-# def savedata():
-#     theemail = myinput.get()
-#     thepassword = myinput1.get()
+def savedata():
+    theemail = myinput.get()
+    thepassword = myinput1.get()
 
-#     if theemail and thepassword:
-#         myselect=sqlite3.connect('class.db')
-#         myconn = myselect.cursor()
-#         myconn.execute('SELECT * FROM prosper (email, password)')
+    if theemail and thepassword:
+        myselect=sqlite3.connect('class.db')
+        myconn = myselect.cursor()
+        myconn.execute('INSERT INTO prosper (email, password) VALUES (?, ? )', (theemail, thepassword))
+        # myconn.commit()
+        myconn.close()
+
+        messagebox.showinfo("Email and password save successfully")
+    else:
+        messagebox.showerror('Credientials not successfully saved')
+        
 mylabel = Label(root, text='Email')
-mylabel.pack()
+mylabel.pack() 
 
 myinput = Entry(root, width=30)
 myinput.pack()
 
-mypass= Label(root, text='password')
+mypass= Label(root, text='password', show="*")
 mypass.pack()
 
 myinput1 = Entry(root, width=30)
@@ -280,6 +288,8 @@ myinput1.pack()
 
 mybutton= Button(root, text='submit', command=myclick)
 mybutton.pack()
+mybutton2 = Button(root, text='Save Data', command=savedata)
+mybutton2.pack()
 
 
 root.mainloop()
