@@ -105,6 +105,27 @@
 #print(x)
 
 
+#create a calculator program
+
+operator = input("enter your operator ( -, +, *,/):")
+num1 = float(input("enter the 1st number: "))
+num2 = float(input("enter the 2nd number :"))
+if operator == "+":
+    result = num1 + num2
+    print(round(result))
+elif operator == "-":
+    result = num1 - num2
+    print(round(result))
+elif operator == "*":
+    result = num1 * num2
+    print(round(result))
+elif operator == "/":
+    result = num1 / num2
+    print(round(result))
+else:
+    print(f"{operator} is not a valid operator" )
+
+    
 
 
 
