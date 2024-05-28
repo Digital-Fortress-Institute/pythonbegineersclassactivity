@@ -360,6 +360,25 @@ def myclear():
 
 
 
+def myplus():
+    first_number= myentry.get()
+    global f_number 
+    global tunde
+    tunde = 'x'
+    f_number = int(first_number)
+    myentry.delete(0, END)
+
+
+def myequal():
+     second_number=int(myentry.get())
+     myentry.delete(0, END)
+     if tunde == "x":
+        myentry.insert(0, f_number + second_number)
+        
+        
+
+
+
 # root.geometry('100x200')
 
 
@@ -376,12 +395,12 @@ mybutton8 = Button(root, text="8", padx=10, pady=20, command=lambda:button_click
 
 mybutton9 = Button(root, text="9", padx=10, pady=20, command=lambda:button_click(9))
 mybutton0 = Button(root, text="0", padx=10, pady=20, command=lambda:button_click(0))
-mybuttonplus = Button(root, text="+", padx=10, pady=20)
+mybuttonplus = Button(root, text="+", padx=10, pady=20, command=myplus)
 mybuttonminus = Button(root, text="-", padx=10, pady=20)
 mybuttondivide = Button(root, text="/", padx=10, pady=20)
 mybuttonclear = Button(root, text="C", padx=10, pady=20, command=myclear)
 mybuttonmultiply = Button(root, text="x", padx=10, pady=20)
-mybuttonequal = Button(root, text="=", padx=10, pady=20)
+mybuttonequal = Button(root, text="=", padx=10, pady=20, command=myequal)
 
 
 mybutton1.grid(row=3, column=0)
@@ -404,6 +423,7 @@ mybuttonclear.grid(row=1, column=1)
 
 mybuttonmultiply.grid(row=1, column=0)
 mybuttonplus.grid(row=1, column=2)
+mybuttonminus.grid(row=6, column=2)
 
 
 
