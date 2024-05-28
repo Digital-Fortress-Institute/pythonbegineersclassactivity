@@ -97,7 +97,7 @@
 #     ''').lower()
 #     if mychoice == 'b':
 #         print(balance)
-# >>>>>>> 166403d2445d57a2aba99ce7e33ba78365dcbe00
+
 
 #     elif mychoice == 'd':
 #         amount=float(input('Enter Amount'))

@@ -390,36 +390,68 @@
 #     value_4 = float(input('>'))
 
 
-operations = {
-    'A': lambda x, y: x + y,
-    'S': lambda x, y: x - y,
-    'M': lambda x, y: x * y,
-    'D': lambda x, y: x / y if y != 0 else "Cannot divide by zero",
-    'P': lambda x, y: (x * y) / 100
-}
-
-print("Select operation:\nA - Addition\nS - Subtraction\nM - Multiplication\nD - Division\nP - Percentage")
-
-
-while True:
-    operator = input("Enter operator: ").upper()
-    try:
-        if operator in operations:
-            num1, num2 = map(float, input("Enter two numbers separated by space: ").split())
-            print("Result:", operations[operator](num1, num2))
-
-            if input("Do you want to perform another calculation? (Y/N): ").lower() != 'y':
-                break
-        else:
-            print("Invalid operator")
-    except (ValueError, TypeError, ZeroDivisionError):
-        print('Your value is invalid')
-
-# from tkinter import *
+# operations = {
+#     'A': lambda x, y: x + y,
+#     'S': lambda x, y: x - y,
+#     'M': lambda x, y: x * y,
+#     'D': lambda x, y: x / y if y != 0 else "Cannot divide by zero",
+#     'P': lambda x, y: (x * y) / 100
+# }
 #
-# root = Tk()
-# root.title('User Interface')
-# root.geometry('1000x600')
+# print("Select operation:\nA - Addition\nS - Subtraction\nM - Multiplication\nD - Division\nP - Percentage")
+#
+#
+# while True:
+#     operator = input("Enter operator: ").upper()
+#     try:
+#         if operator in operations:
+#             num1, num2 = map(float, input("Enter two numbers separated by space: ").split())
+#             print("Result:", operations[operator](num1, num2))
+#
+#             if input("Do you want to perform another calculation? (Y/N): ").lower() != 'y':
+#                 break
+#         else:
+#             print("Invalid operator")
+#     except (ValueError, TypeError, ZeroDivisionError):
+#         print('Your value is invalid')
+
+from tkinter import *
+
+root = Tk()
+root.title('User Interface')
+root.geometry('1000x600')
+
+def result():
+    email_key = email_entry.get()
+    pass_key = pass_entry.get()
+    name_key = us_name_entry.get()
+
+    email_result = Label(root, text=email_key)
+    email_result.pack()
+    pass_result = Label(root, text=pass_key)
+    pass_result.pack()
+    name_result = Label(root, text=name_key)
+    name_result.pack()
+
+user_name = Label(root, text='Name:')
+user_name.pack()
+us_name_entry = Entry(root, width=30)
+us_name_entry.pack()
+
+email = Label(root, text='E-mail:')
+email.pack()
+email_entry = Entry(root, width=30)
+email_entry.pack()
+
+password = Label(root, text='Password:')
+password.pack()
+pass_entry = Entry(root, width=30)
+pass_entry.pack()
+
+submit = Button(root, text='Submit', command=result)
+submit.pack()
+
+root.mainloop()
 # label = Label(root, text="Name")
 # label.grid(row=0, column=0)  # This sets the alignment of the labels.
 # entry = Entry(root, width=60)
