@@ -154,61 +154,154 @@
 
 #GUI
 
+# import tkinter as tk
+# window = tk.Tk()
+# window.title("Address Entry Form")
+# window.geometry("800x600")
+# # window.geometry("400x220")
+
+
+
+# frame=tk.Frame(master=window,height=160,width=400,relief="groove",borderwidth=5)
+# frame1=tk.Frame(master=window, width=380, height=50,background="red")
+
+# label1=tk.Label(text="First Name: ", master=frame)
+# label2=tk.Label(text="Last Name: ", master=frame)
+# label3=tk.Label(text="Address Line 1: ", master=frame)
+# label4=tk.Label(text="Address Line 2: ", master=frame)
+# label5=tk.Label(text="City: ", master=frame)
+# label6=tk.Label(text="State/Province: ", master=frame)
+# label7=tk.Label(text="Postal Code: ", master=frame)
+# label8=tk.Label(text="Country: ", master=frame)
+
+
+# entry1=tk.Entry(master=frame, width=50)
+# entry2=tk.Entry(master=frame, width=50)
+# entry3=tk.Entry(master=frame, width=50)
+# entry4=tk.Entry(master=frame, width=50)
+# entry5=tk.Entry(master=frame, width=50)
+# entry6=tk.Entry(master=frame, width=50)
+# entry7=tk.Entry(master=frame, width=50)
+# entry8=tk.Entry(master=frame, width=50)
+
+# button=tk.Button(master=frame1, text="Clear", height=1, width=6)
+# button1=tk.Button(master=frame1, text="Clear", height=1, width=6)
+
+# # Entry
+# label1.grid(row=0,column=0)
+# label2.grid(row=5, column=0)
+# label3.grid(row=10, column=0)
+# label4.grid(row=15, column=0)
+# label5.grid(row=20, column=0)
+# label6.grid(row=25, column=0)
+# label7.grid(row=30, column=0)
+# label8.grid(row=35, column=0)
+# # Entry
+# entry1.grid(row=0, column=5)
+# entry2.grid(row=5, column=5)
+# entry3.grid(row=10, column=5)
+# entry4.grid(row=15, column=5)
+# entry5.grid(row=20, column=5)
+# entry6.grid(row=25, column=5)
+# entry7.grid(row=30, column=5)
+# entry8.grid(row=35, column=5)
+# frame.grid()
+# frame1.grid(sticky="se")
+# button.grid()
+# button1.grid()
+
+
+# window.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import tkinter as tk
+
+# # Create the main application window
+# root = tk.Tk()
+# root.title("Simple Calculator")
+
+# # Create an entry widget
+# entry = tk.Entry(root, width=35, borderwidth=5)
+# entry.grid(row=0, column=0, columnspan=4, padx=10, pady=10)
+
+# # Define button click function
+# def button_click(number):
+#     current = entry.get()
+#     entry.delete(0, tk.END)
+#     entry.insert(0, current + str(number))
+
+# # Define clear function
+# def button_clear():
+#     entry.delete(0, tk.END)
+
+# # Define equal function
+# def button_equal():
+#     try:
+#         result = eval(entry.get())
+#         entry.delete(0, tk.END)
+#         entry.insert(0, str(result))
+#     except:
+#         entry.delete(0, tk.END)
+#         entry.insert(0, "Error")
+
+# # Define button creation function
+# def create_button(text, row, col, command=None):
+#     return tk.Button(root, text=text, padx=20, pady=20, command=command).grid(row=row, column=col)
+
+# # Create number buttons
+# button_1 = create_button('1', 3, 0, command=lambda: button_click(1))
+# button_2 = create_button('2', 3, 1, command=lambda: button_click(2))
+# button_3 = create_button('3', 3, 2, command=lambda: button_click(3))
+
+# button_4 = create_button('4', 2, 0, command=lambda: button_click(4))
+# button_5 = create_button('5', 2, 1, command=lambda: button_click(5))
+# button_6 = create_button('6', 2, 2, command=lambda: button_click(6))
+
+# button_7 = create_button('7', 1, 0, command=lambda: button_click(7))
+# button_8 = create_button('8', 1, 1, command=lambda: button_click(8))
+# button_9 = create_button('9', 1, 2, command=lambda: button_click(9))
+
+# button_0 = create_button('0', 4, 0, command=lambda: button_click(0))
+
+# # Create operator buttons
+# button_add = create_button('+', 4, 1, command=lambda: button_click('+'))
+# button_equal = create_button('=', 4, 2, command=button_equal)
+# button_clear = create_button('C', 4, 3, command=button_clear)
+
+# button_subtract = create_button('-', 3, 3, command=lambda: button_click('-'))
+# button_multiply = create_button('', 2, 3, command=lambda: button_click(''))
+# button_divide = create_button('/', 1, 3, command=lambda: button_click('/'))
+
+# # Run the application
+# root.mainloop()
+
+
+
+
+
+
+
 import tkinter as tk
-window = tk.Tk()
-window.title("Address Entry Form")
-window.geometry("800x600")
-# window.geometry("400x220")
 
 
-
-frame=tk.Frame(master=window,height=160,width=400,relief="groove",borderwidth=5)
-frame1=tk.Frame(master=window, width=380, height=50,background="red")
-
-label1=tk.Label(text="First Name: ", master=frame)
-label2=tk.Label(text="Last Name: ", master=frame)
-label3=tk.Label(text="Address Line 1: ", master=frame)
-label4=tk.Label(text="Address Line 2: ", master=frame)
-label5=tk.Label(text="City: ", master=frame)
-label6=tk.Label(text="State/Province: ", master=frame)
-label7=tk.Label(text="Postal Code: ", master=frame)
-label8=tk.Label(text="Country: ", master=frame)
+root = tk.Tk()
+root.title("Simple Calculator")
+entry = tk.Entry(root, borderwidth=4, border=9, cursor="xterm").grid()
 
 
-entry1=tk.Entry(master=frame, width=50)
-entry2=tk.Entry(master=frame, width=50)
-entry3=tk.Entry(master=frame, width=50)
-entry4=tk.Entry(master=frame, width=50)
-entry5=tk.Entry(master=frame, width=50)
-entry6=tk.Entry(master=frame, width=50)
-entry7=tk.Entry(master=frame, width=50)
-entry8=tk.Entry(master=frame, width=50)
-
-button=tk.Button(master=frame1, text="Clear", height=1, width=6)
-button1=tk.Button(master=frame1, text="Clear", height=1, width=6)
-
-# Entry
-label1.grid(row=0,column=0)
-label2.grid(row=5, column=0)
-label3.grid(row=10, column=0)
-label4.grid(row=15, column=0)
-label5.grid(row=20, column=0)
-label6.grid(row=25, column=0)
-label7.grid(row=30, column=0)
-label8.grid(row=35, column=0)
-# Entry
-entry1.grid(row=0, column=5)
-entry2.grid(row=5, column=5)
-entry3.grid(row=10, column=5)
-entry4.grid(row=15, column=5)
-entry5.grid(row=20, column=5)
-entry6.grid(row=25, column=5)
-entry7.grid(row=30, column=5)
-entry8.grid(row=35, column=5)
-frame.grid()
-frame1.grid(sticky="se")
-button.grid()
-button1.grid()
-
-
-window.mainloop()
+root.mainloop()

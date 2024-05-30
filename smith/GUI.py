@@ -313,8 +313,8 @@
 
 
 
-
-
+from tkinter import *
+from PIL import Image, ImageTk
 import tkinter as tk
 
 smith=tk.Tk()
