@@ -300,8 +300,28 @@ import tkinter as tk
 
 
 root = tk.Tk()
-root.title("Simple Calculator")
-entry = tk.Entry(root, borderwidth=4, border=9, cursor="xterm").grid()
+root.title("Simple Form")
+root.geometry("500x500")
+
+def exit():
+    root.destroy()
+
+def printt():
+    print("hello world")
+
+label1 = tk.Label(master=root, text="Registration Form", relief=tk.SOLID, width=20, font=("arial",19,"bold"))
+label1.place(x=90, y=53)
+label2 = tk.Label(master=root, text="First Name: ",width=20, font=("arial",10,"bold"))
+label2.place(x=80, y=130)
+label3 = tk.Label(master=root, text="Last Name: ",width=20, font=("arial",10,"bold"))
+label3.place(x=80, y=179)
+entry1 = tk.Entry(root, borderwidth=4, border=9, cursor="xterm")
+# entry1.grid()
+
+button1 = tk.Button(master=root, text="Login", width=12, background="brown", foreground="white", command=printt)
+button1.place(x=150,y=380)
+button2 = tk.Button(master=root, text="Quit", width=12, background="brown", foreground="white", command=exit)
+button2.place(x=280,y=380)
 
 
 root.mainloop()
