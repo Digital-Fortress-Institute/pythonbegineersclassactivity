@@ -297,31 +297,85 @@
 
 
 import tkinter as tk
+from PIL import Image, ImageTk
+import tkinter.messagebox
+
 
 
 root = tk.Tk()
 root.title("Simple Form")
 root.geometry("500x500")
 
+
+image = Image.open("C:/Users/SMITH/Desktop/dcmi/spanels.png")
+photo=ImageTk.PhotoImage(image)
+
+lab = tk.Label(master=root, height=80, width=100,image=photo)
+lab.pack()
+
+
+fn = tk.StringVar()
+ln = tk.StringVar()
+dob = tk.StringVar()
+var = tk.StringVar()
+var_cb=tk.StringVar()
+
+
+
 def exit():
     root.destroy()
 
 def printt():
-    print("hello world")
+    fname = fn.get()
+    lname = ln.get()
+    dobirth = dob.get()
+    dmenu = var.get()
+    print(f"your name is: {fname} {lname}")
+    print(f"your date of birth is: {dobirth}")
+    print(f"and your country is: {dmenu}")
+
 
 label1 = tk.Label(master=root, text="Registration Form", relief=tk.SOLID, width=20, font=("arial",19,"bold"))
-label1.place(x=90, y=53)
-label2 = tk.Label(master=root, text="First Name: ",width=20, font=("arial",10,"bold"))
-label2.place(x=80, y=130)
-label3 = tk.Label(master=root, text="Last Name: ",width=20, font=("arial",10,"bold"))
-label3.place(x=80, y=179)
-entry1 = tk.Entry(root, borderwidth=4, border=9, cursor="xterm")
-# entry1.grid()
+label1.place(x=90, y=100)
+
+label2 = tk.Label(master=root, text="First Name: ",width=15, font=("arial",10,"bold"))
+label2.place(x=40, y=170)
+label3 = tk.Label(master=root, text="Last Name: ",width=15, font=("arial",10,"bold"))
+label3.place(x=40, y=220)
+label4 = tk.Label(master=root, text="DOB: ",width=15, font=("arial",10,"bold"))
+label4.place(x=40, y=260)
+label5 = tk.Label(master=root, text="Country: ",width=15, font=("arial",10,"bold"))
+label5.place(x=50, y=360)
+label6 = tk.Label(master=root, text="Prog Lang :",width=15, font=("arial",10,"bold"))
+label6.place(x=40, y=290)
+label7 = tk.Label(master=root, text="Gender: ",width=15, font=("arial",10,"bold"))
+label7.place(x=40, y=325)
+
+
+
+cb = tk.Checkbutton(master=root, text="Java", variable=var_cb)
+cb.place(x=165, y=290)
+
+
+entry1 = tk.Entry(master=root, width=24,relief="groove", borderwidth=2, cursor="xterm", textvariable=fn)
+entry1.place(x=170, y=170)
+entry2 = tk.Entry(master=root, width=24, borderwidth=2,relief="groove", cursor="xterm", textvariable=ln)
+entry2.place(x=170, y=220)
+entry3 = tk.Entry(master=root, textvar=dob, width=24, borderwidth=2,relief="groove", cursor="xterm")
+entry3.place(x=170, y=265)
+
+list1 = ["Nepal","" "Nigeria", "Cameroon", "Ghana"]
+droplist = tk.OptionMenu(root,var,*list1)
+var.set("Select Country")
+droplist.config(width=15)
+droplist.place(x=180, y=360)
+
+
 
 button1 = tk.Button(master=root, text="Login", width=12, background="brown", foreground="white", command=printt)
-button1.place(x=150,y=380)
+button1.place(x=150,y=400)
 button2 = tk.Button(master=root, text="Quit", width=12, background="brown", foreground="white", command=exit)
-button2.place(x=280,y=380)
+button2.place(x=280,y=400)
 
 
 root.mainloop()
