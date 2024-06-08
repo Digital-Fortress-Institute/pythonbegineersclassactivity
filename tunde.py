@@ -17,49 +17,6 @@
 #     print('Invalid')
 #     exit()
 # user =input('Enter your name')
-# print(f'Welcome Mr/Mrs/Miss {user} you current balance is {balance} ')
-# newbalance = False
-# while True:
-#     mychoice = input('''
-#             b to check balance
-#             d to deposit
-#             w to withdraw
-#             q to quit
-#     ''')
-#     if mychoice == 'b':
-#         print(balance)
-
-#     elif mychoice == 'd':
-#         amount=float(input('Enter Amount'))
-#         print(f'Your current balance is: {balance + amount}')
-#         totalbalance = balance + amount
-#     elif mychoice == 'w':
-#         amount=float(input('Enter Amount'))
-#         if amount > totalbalance:
-#             print('Insufficient fund')
-#         else:
-#             print('transactioin successfull.')
-            
-#         print(f'Your current balance is: {totalbalance - amount}')
-#     elif mychoice == 'q':
-#         print('Thanks for banking with us')
-#         exit()
-
-
-# print('Welcome to Digital Fortress Micro Finance Bank')
-# card_pin=int(input('Please enter your pin  \n'))
-# if card_pin == pin:
-#     print('Welcome')
-# else:
-#     print('Invalid')
-#     exit()
-# mycard_number=int(input('Please enter your card number  \n'))
-# if mycard_number == card_number:
-#     print('Welcome')
-# else:
-#     print('Invalid')
-#     exit()
-# user =input('Enter your name')
 # print(f'Welcome Mr/Mrs/Miss {user} you current balance is {balance}')
 # newbalance = False
 # while True:
@@ -97,7 +54,7 @@
 #     ''').lower()
 #     if mychoice == 'b':
 #         print(balance)
-
+# >>>>>>> 166403d2445d57a2aba99ce7e33ba78365dcbe00
 
 #     elif mychoice == 'd':
 #         amount=float(input('Enter Amount'))
@@ -143,7 +100,7 @@
 # print(employee)
 
 # set
-# score = { 10, 20, 10, 10, 60, 'banana', 30, 20, True, 1, False, 0}
+# score = { 10, 20, 10, 40, 60, 'banana', 30, 20, True, 1, False, 0}
 # mycolor = {'black', 'yellow', 'red', 'purple'}
 # colors = ( 'blue', 'purple', 'black', 'yellow')
 # x = 10 not in score
@@ -227,7 +184,7 @@
 # print(set1.difference(set2))
 # print(set1^set2) 
 
-# x = [20, 10, 10, 60, 30, 70, 25, 75, 21, 53]
+# x = [20, 10, 40, 60, 30, 70, 25, 75, 21, 53]
 # myx = list(map( lambda y: y % 5 == 0, x))
 # # myx = lambda y : y + y
 # print(myx)
@@ -263,7 +220,7 @@
 # entry = Entry(root, width='60')
 # entry.grid(row=0, column=1 )
 # mybutton= Button(root, text='Submit')
-# mybutton.grid(row=1, column=0, padx='10')
+# mybutton.grid(row=1, column=0, padx='40')
 
 # # label.pack()
 # root.mainloop()
@@ -317,6 +274,7 @@ def savedata():
         messagebox.showerror('Credientials not successfully saved')
         
 mylabel = Label(root, text='Email')
+<<<<<<< HEAD
 mylabel.grid(row=0, column=1) 
 
 myinput = Entry(root, width=30)
@@ -333,6 +291,24 @@ mybutton= Button(root, text='submit', command=myclick)
 mybutton.grid(row=4, column=1)
 mybutton2 = Button(root, text='Save Data', command=savedata)
 mybutton2.grid(row=5, column=1) 
+=======
+mylabel.pack() 
+
+myinput = Entry(root, width=30)
+myinput.pack()
+
+mypass= Label(root, text='password', show="*")
+mypass.pack()
+
+myinput1 = Entry(root, width=30)
+myinput1.pack()
+
+
+mybutton= Button(root, text='submit', command=myclick)
+mybutton.pack()
+mybutton2 = Button(root, text='Save Data', command=savedata)
+mybutton2.pack()
+>>>>>>> 2f063672c2c6a6a797a532b5d4b17ede571408b5
 
 
 root.mainloop()
@@ -490,3 +466,8 @@ root.mainloop()
 
 
 
+from tkinter import *
+root= Tk()
+root.title("GUI")
+root.geometry("1000x500")
+label=Label(root,text= "First name")
