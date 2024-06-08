@@ -268,170 +268,224 @@
 # # label.pack()
 # root.mainloop()
 
-# from tkinter import *
-# from tkinter import messagebox
-# import sqlite3
-# def create_table():
-#     tunde = sqlite3.connect(
-#         "class.db"
-#     )
-#     myclass= tunde.cursor()
-#     myclass.execute(
-#         """CREATE TABLE IF NOT EXISTS prosper (
-#             id INTEGER PRIMARY KEY AUTOINCREMENT,
-#             email TEXT NOT NULL,
-#             password TEXT NOT NULL
+from tkinter import *
+from tkinter import messagebox
+import sqlite3
+def create_table():
+    tunde = sqlite3.connect(
+        "class.db"
+    )
+    myclass= tunde.cursor()
+    myclass.execute(
+        """CREATE TABLE IF NOT EXISTS prosper (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email TEXT NOT NULL,
+            password TEXT NOT NULL
             
-#             )
-#         """
-#     )
-#     tunde.commit()
-#     tunde.close()
+            )
+        """
+    )
+    tunde.commit()
+    tunde.close()
 
-# root=Tk()
-# root.title('My GUI INterface')
-# create_table()
-# def myclick():
-#     password = myinput1.get()
-#     myemail= myinput.get()
+root=Tk()
+root.title('My GUI INterface')
+create_table()
+def myclick():
+    password = myinput1.get()
+    myemail= myinput.get()
 
     
 
-#     result1 = Label(root, text=myemail)
-#     result1.pack()
-#     result2= Label(root, text=password)
-#     result2.pack()
-# def savedata():
-#     theemail = myinput.get()
-#     thepassword = myinput1.get()
+    result1 = Label(root, text=myemail)
+    result1.pack()
+    result2= Label(root, text=password)
+    result2.pack()
+def savedata():
+    theemail = myinput.get()
+    thepassword = myinput1.get()
 
-#     if theemail and thepassword:
-#         myselect=sqlite3.connect('class.db')
-#         myconn = myselect.cursor()
-#         myconn.execute('INSERT INTO prosper (email, password) VALUES (?, ? )', (theemail, thepassword))
-#         # myconn.commit()
-#         myconn.close()
+    if theemail and thepassword:
+        myselect=sqlite3.connect('class.db')
+        myconn = myselect.cursor()
+        myconn.execute('INSERT INTO prosper (email, password) VALUES (?, ? )', (theemail, thepassword))
+        # myconn.commit()
+        myconn.close()
 
-#         messagebox.showinfo("Email and password save successfully")
-#     else:
-#         messagebox.showerror('Credientials not successfully saved')
+        messagebox.showinfo("Email and password save successfully")
+    else:
+        messagebox.showerror('Credientials not successfully saved')
         
-# mylabel = Label(root, text='Email')
-# mylabel.pack() 
+mylabel = Label(root, text='Email')
+mylabel.grid(row=0, column=1) 
 
-# myinput = Entry(root, width=30)
-# myinput.pack()
+myinput = Entry(root, width=30)
+myinput.grid(row=0, column=2)
 
-# mypass= Label(root, text='password')
-# mypass.pack()
+mypass= Label(root, text='password')
+mypass.grid(row=1, column=1)
 
-# myinput1 = Entry(root, width=30)
-# myinput1.pack()
-
-
-# mybutton= Button(root, text='submit', command=myclick)
-# mybutton.pack()
-# mybutton2 = Button(root, text='Save Data', command=savedata)
-# mybutton2.pack()
+myinput1 = Entry(root, width=30,  show='*')
+myinput1.grid(row=1, column=2)
 
 
-# root.mainloop()
-
-
-
-
-from tkinter import *
-
-
-
-root =  Tk()
-root.title('Simple Calculator')
-myentry = Entry(width=20)
-myentry.grid(row=0, column=0, padx=10, pady=10)
-
-def button_click(x):
-    myclick = myentry.get()
-    myentry.delete(0, END)
-    myentry.insert(0, str(myclick) + str(x))
-
-
-def myclear():
-      myentry.delete(0, END)
-
-
-
-def myplus():
-    first_number= myentry.get()
-    global f_number 
-    global tunde
-    tunde = 'x'
-    f_number = int(first_number)
-    myentry.delete(0, END)
-
-
-def myequal():
-     second_number=int(myentry.get())
-     myentry.delete(0, END)
-     if tunde == "x":
-        myentry.insert(0, f_number + second_number)
-        
-        
-
-
-
-# root.geometry('100x200')
-
-
-
-mybutton1 = Button(root, text="1", padx=10, pady=20, command=lambda:button_click(1))
-mybutton2 = Button(root, text="2", padx=10, pady=20, command=lambda:button_click(2))
-mybutton3 = Button(root, text="3", padx=10, pady=20, command=lambda:button_click(3))
-mybutton4 = Button(root, text="4", padx=10, pady=20, command=lambda:button_click(4))
-
-mybutton5 = Button(root, text="5", padx=10, pady=20, command=lambda:button_click(5))
-mybutton6 = Button(root, text="6", padx=10, pady=20, command=lambda:button_click(6))
-mybutton7 = Button(root, text="7", padx=10, pady=20, command=lambda:button_click(7))
-mybutton8 = Button(root, text="8", padx=10, pady=20, command=lambda:button_click(8))
-
-mybutton9 = Button(root, text="9", padx=10, pady=20, command=lambda:button_click(9))
-mybutton0 = Button(root, text="0", padx=10, pady=20, command=lambda:button_click(0))
-mybuttonplus = Button(root, text="+", padx=10, pady=20, command=myplus)
-mybuttonminus = Button(root, text="-", padx=10, pady=20)
-mybuttondivide = Button(root, text="/", padx=10, pady=20)
-mybuttonclear = Button(root, text="C", padx=10, pady=20, command=myclear)
-mybuttonmultiply = Button(root, text="x", padx=10, pady=20)
-mybuttonequal = Button(root, text="=", padx=10, pady=20, command=myequal)
-
-
-mybutton1.grid(row=3, column=0)
-mybutton2.grid(row=3, column=1)
-mybutton3.grid(row=3, column=2)
-
-
-mybutton4.grid(row=4, column=0)
-mybutton5.grid(row=4, column=1)
-mybutton6.grid(row=4, column=2)
-
-mybutton7.grid(row=5, column=0)
-mybutton8.grid(row=5, column=1)
-mybutton9.grid(row=5, column=2)
-mybutton0.grid(row=6, column=1)
-mybuttonequal.grid(row=6, column=0)
-
-mybuttonclear.grid(row=1, column=1)
-
-
-mybuttonmultiply.grid(row=1, column=0)
-mybuttonplus.grid(row=1, column=2)
-mybuttonminus.grid(row=6, column=2)
-
-
+mybutton= Button(root, text='submit', command=myclick)
+mybutton.grid(row=4, column=1)
+mybutton2 = Button(root, text='Save Data', command=savedata)
+mybutton2.grid(row=5, column=1) 
 
 
 root.mainloop()
 
 
 
+
+# from tkinter import *
+
+
+
+# root =  Tk()
+# root.title('Simple Calculator')
+# myentry = Entry(width=20)
+# myentry.grid(row=0, column=0, padx=10, pady=10)
+
+# def button_click(x):
+#     myclick = myentry.get()
+#     myentry.delete(0, END)
+#     myentry.insert(0, str(myclick) + str(x))
+
+
+# def myclear():
+#       myentry.delete(0, END)
+
+
+
+# def myplus():
+#     first_number= myentry.get()
+#     global f_number 
+#     global tunde
+#     tunde = 'x'
+#     f_number = int(first_number)
+#     myentry.delete(0, END)
+
+
+# def myequal():
+#      second_number=int(myentry.get())
+#      myentry.delete(0, END)
+#      if tunde == "x":
+#         myentry.insert(0, f_number + second_number)
+        
+        
+
+
+
+# # root.geometry('100x200')
+
+
+
+# mybutton1 = Button(root, text="1", padx=10, pady=20, command=lambda:button_click(1))
+# mybutton2 = Button(root, text="2", padx=10, pady=20, command=lambda:button_click(2))
+# mybutton3 = Button(root, text="3", padx=10, pady=20, command=lambda:button_click(3))
+# mybutton4 = Button(root, text="4", padx=10, pady=20, command=lambda:button_click(4))
+
+# mybutton5 = Button(root, text="5", padx=10, pady=20, command=lambda:button_click(5))
+# mybutton6 = Button(root, text="6", padx=10, pady=20, command=lambda:button_click(6))
+# mybutton7 = Button(root, text="7", padx=10, pady=20, command=lambda:button_click(7))
+# mybutton8 = Button(root, text="8", padx=10, pady=20, command=lambda:button_click(8))
+
+# mybutton9 = Button(root, text="9", padx=10, pady=20, command=lambda:button_click(9))
+# mybutton0 = Button(root, text="0", padx=10, pady=20, command=lambda:button_click(0))
+# mybuttonplus = Button(root, text="+", padx=10, pady=20, command=myplus)
+# mybuttonminus = Button(root, text="-", padx=10, pady=20)
+# mybuttondivide = Button(root, text="/", padx=10, pady=20)
+# mybuttonclear = Button(root, text="C", padx=10, pady=20, command=myclear)
+# mybuttonmultiply = Button(root, text="x", padx=10, pady=20)
+# mybuttonequal = Button(root, text="=", padx=10, pady=20, command=myequal)
+
+
+# mybutton1.grid(row=3, column=0)
+# mybutton2.grid(row=3, column=1)
+# mybutton3.grid(row=3, column=2)
+
+
+# mybutton4.grid(row=4, column=0)
+# mybutton5.grid(row=4, column=1)
+# mybutton6.grid(row=4, column=2)
+
+# mybutton7.grid(row=5, column=0)
+# mybutton8.grid(row=5, column=1)
+# mybutton9.grid(row=5, column=2)
+# mybutton0.grid(row=6, column=1)
+# mybuttonequal.grid(row=6, column=0)
+
+# mybuttonclear.grid(row=1, column=1)
+
+
+# mybuttonmultiply.grid(row=1, column=0)
+# mybuttonplus.grid(row=1, column=2)
+# mybuttonminus.grid(row=6, column=2)
+
+
+
+# polymorphysm
+
+# class Car:
+      
+
+
+
+
+
+
+
+
+# root.mainloop()
+
+# def tunde(x):
+   
+#     match x:
+#         case _ if x >= 90 and x <= 100:
+#             print('Grade A')
+#         case _ if x >= 70 and x <= 89:
+#             print("grade B ")
+#         case _:
+#             print('Unknow Result')
+# tunde(x=int('Enter your score:'))
+
+        
+
+
+
+# class Product:
+#     def __init__(self, price, name, version, color):
+#         self.name = name
+#         self.price = price
+#         self.version=version
+#         self.color = color
+
+#     def __str__(self):
+#         return f"{self.name} {self.price} {self.color}"
+#      def tunde(self):
+#         return f"The product is {self.name}"
+    
+
+# myproduct = Product(1000, 'Headset', 'a.o', 'black')
+# print(myproduct.tunde())
+
+
+
+
+# class New_product(Product):
+#     def __init__(self, price, name, version, color, size, weight):
+#         super().__init__(price, name, version, color)
+#         self.size=size
+#         self.weight=weight
+        
+#     def __str__(self):
+#         return f'{self.size} {self.weight} {self.name} {self.price} {self.color}'
+
+# ournewproduct = New_product('xxl', '75kg', 'Samsung', 50000, 'red', 'ujj' ) 
+# print(ournewproduct)     
 
 
 
