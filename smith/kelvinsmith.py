@@ -299,7 +299,7 @@
 import tkinter as tk
 from PIL import Image, ImageTk
 import tkinter.messagebox
-
+import sqlite3
 
 
 root = tk.Tk()
@@ -318,21 +318,73 @@ fn = tk.StringVar()
 ln = tk.StringVar()
 dob = tk.StringVar()
 var = tk.StringVar()
-var_cb=tk.StringVar()
+var_py="Python3"
+var_ja="Java"
+radio_var=tk.StringVar()
 
 
-
-def exit():
-    root.destroy()
 
 def printt():
     fname = fn.get()
     lname = ln.get()
     dobirth = dob.get()
     dmenu = var.get()
+    lang = var_py
+    lang = var_ja
+    gend = radio_var.get()
     print(f"your name is: {fname} {lname}")
     print(f"your date of birth is: {dobirth}")
     print(f"and your country is: {dmenu}")
+    print(f"your gender is :{gend}")
+    print(f"your programming language is: {lang}")
+    tkinter.messagebox.showinfo("welcome", "User is successfully signed up")
+
+def database():
+    firstn=fn.get()
+    lastn = ln.get()
+    dateob=dob.get()
+    country1=var.get()
+    prog=var_py
+    prog=var_ja
+    gend=radio_var.get()
+    data1 = sqlite3.connect("test_database.db")
+    with data1:
+        cursor = data1.cursor()
+        cursor.execute("CREATE TABLE IF NOT EXISTS Student (Name TEXT,Last TEXT,DOB TEXT, Country TEXT,Programming TEXT,Gender TEXT)")
+        cursor.execute("INSERT INTO Student(Name,Last,DOB,Country,Programming,Gender) VALUES(?,?,?,?,?,?)",(firstn,lastn,dateob,country1,prog,gend))
+        data1.commit()
+
+
+menu = tk.Menu(root)
+root.config(menu=menu)
+
+def second_win():
+    window2=tk.Tk()
+    window2.title("Welcome to second Window")
+    window2.geometry("250x200")
+    label_02 = tk.Label(window2, text="Registration Completed", relief=tk.SOLID, font=("arial", 12, "bold")).place(x=30, y=70)
+    but_01 = tk.Button(master=window2, text="Demo", width=12, background="brown", foreground="white", command=abt)
+    but_01.place(x=80,y=110)
+        
+
+def exit():
+    root.destroy()
+
+def abt():
+    tkinter.messagebox.showinfo("Welcome to Authors", "This is demo for menu fields")
+
+
+
+
+
+subm1 = tk.Menu(menu)
+menu.add_cascade(label="File", menu=subm1)
+subm1.add_command(label="Exit", command=exit)
+subm1.add_command(label="Save")
+
+subm2 = tk.Menu(menu)
+menu.add_cascade(label="Option", menu=subm2)
+subm2.add_command(label="About", command=abt)
 
 
 label1 = tk.Label(master=root, text="Registration Form", relief=tk.SOLID, width=20, font=("arial",19,"bold"))
@@ -353,9 +405,15 @@ label7.place(x=40, y=325)
 
 
 
-cb = tk.Checkbutton(master=root, text="Java", variable=var_cb)
+cb = tk.Checkbutton(root, text="Java", variable=var_ja)
 cb.place(x=165, y=290)
+cb1 = tk.Checkbutton(root, text="Python", variable=var_py)
+cb1.place(x=230, y=290)
 
+r1 = tk.Radiobutton(root, variable=radio_var, text="Male", value="Male")
+r1.place(x=170, y=325)
+r2 = tk.Radiobutton(root, variable=radio_var, text="Female", value="Female")
+r2.place(x=230, y=325)
 
 entry1 = tk.Entry(master=root, width=24,relief="groove", borderwidth=2, cursor="xterm", textvariable=fn)
 entry1.place(x=170, y=170)
@@ -364,7 +422,7 @@ entry2.place(x=170, y=220)
 entry3 = tk.Entry(master=root, textvar=dob, width=24, borderwidth=2,relief="groove", cursor="xterm")
 entry3.place(x=170, y=265)
 
-list1 = ["Nepal","" "Nigeria", "Cameroon", "Ghana"]
+list1 = ["Nepal","Brazil", "Nigeria", "Cameroon", "Ghana", "China", "Korea"]
 droplist = tk.OptionMenu(root,var,*list1)
 var.set("Select Country")
 droplist.config(width=15)
@@ -372,10 +430,16 @@ droplist.place(x=180, y=360)
 
 
 
-button1 = tk.Button(master=root, text="Login", width=12, background="brown", foreground="white", command=printt)
-button1.place(x=150,y=400)
+button1 = tk.Button(master=root, text="Signup", width=12, background="brown", foreground="white", command=database).place(x=150,y=400)
+root.bind("<Return>", database)
+
 button2 = tk.Button(master=root, text="Quit", width=12, background="brown", foreground="white", command=exit)
 button2.place(x=280,y=400)
+button1 = tk.Button(master=root, text="Login", width=12, background="brown", foreground="white", command=lambda: [exit(), second_win()])
+button1.place(x=210,y=440)
+
+
+
 
 
 root.mainloop()
