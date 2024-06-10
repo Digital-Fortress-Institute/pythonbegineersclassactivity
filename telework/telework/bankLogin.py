@@ -255,7 +255,7 @@ class LoginForm(tk.Tk):
                 # Play a welcome audio
                 if self.check_wifi_connection():
                     # If there is an internet connection, use pygame
-                    # self.play_audio(username)
+                    self.play_audio(username)
                     self.open_welcome_window(username)
                     self.withdraw()
                     
