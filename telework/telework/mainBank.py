@@ -4,6 +4,7 @@ import sqlite3
 from sideBar import Sidebar
 from tkinter import messagebox
 import mysql.connector
+from PIL import Image, ImageTk
 
 class WelcomeWindow:
     def __init__(self, master, username):
@@ -357,7 +358,7 @@ your other PTP account""", style="Big.TButton", command=self.show_fund_account_d
         self.master.deiconify()
 
 
-root = tk.Tk()
-welcome_window = WelcomeWindow(root, "username")
-root.withdraw()  # Hide the root window
-welcome_window.new_window.mainloop()
+# root = tk.Tk()
+# welcome_window = WelcomeWindow(root, "username")
+# root.withdraw()  # Hide the root window
+# welcome_window.new_window.mainloop()

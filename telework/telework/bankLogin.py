@@ -7,13 +7,20 @@ from PIL import Image, ImageTk
 import sqlite3
 from gtts import gTTS
 import pygame
+from tkinter import simpledialog
 import os
 import subprocess
 import time
 from registerWindow import NewWindow
+from sideBar import Sidebar
 import threading
+from tkinter import ttk
 from mainBank import WelcomeWindow
-import mysql.connector
+
+# from test import get_selected_option
+
+# def work(self):
+#     self.get_selected_option()
 
 
 
@@ -26,7 +33,7 @@ class LoginForm(tk.Tk):
         screen_height = self.winfo_screenheight()
 
         # Assuming the taskbar's height is 40 pixels (you may need to adjust this)
-        taskbar_height = 40
+        taskbar_height = 70
 
         # Set the window's geometry to the screen's width and height, minus the taskbar's height
         self.geometry(f"{screen_width}x{screen_height - taskbar_height}")
@@ -49,8 +56,8 @@ class LoginForm(tk.Tk):
         
         # welcome text
         self.txt = """WELCOME TO PROPATEES BANK"""
-        
-        
+        self.heading = Label(self.lgn_frame, text=self.txt, font=('yu gothic ui', 25, 'bold'), bg='#3B3C36', fg='white')
+        self.heading.place(x=0, y=5, width=550, height=100)
         
         # login button pic and button function
         self.lgn_button = Image.open('btn1.png')
@@ -184,18 +191,11 @@ class LoginForm(tk.Tk):
                         # Show a message box with a welcome message
                         messagebox.showinfo("Login Success", f"Welcome, {username}! Login successful!")
 
-                        if self.check_wifi_connection():
-                            # If there is an internet connection, use pygame
-                            # self.play_audio(username)
-                            self.open_welcome_window(username)
-                            self.withdraw()
-                            
-                        else:
-                            # If there is no internet connection, use pyttsx3
-                            self.play_welcome_audio_pyttsx3(username)
+                        # self.play_welcome_audio_pygame(username)
+                        self.play_welcome_audio_pyttsx3(username)
 
                         # Open a new window
-                        self.open_welcome_window(username)
+                        self.create_welcome_window(username)
                         self.withdraw()
                         dialog.destroy()
                     else:
@@ -234,49 +234,36 @@ class LoginForm(tk.Tk):
             messagebox.showerror("Error", "Please fill in all fields")
             return
 
-        # Connect to MySQL database
-        db = mysql.connector.connect(
-            host="localhost",
-            user="tele",
-            password="telesql19",
-            database="new_database"
-        )
-        cursor = db.cursor()
+        # Connect to database
+        conn = sqlite3.connect("users.db")
+        c = conn.cursor()
 
-        try:
-            # Check if username and password exist in the database
-            cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, password))
-            row = cursor.fetchone()
+        # Check if username and password exist in the database
+        c.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
+        row = c.fetchone()
 
-            if row:
-                # Show a message box with a welcome message
-                messagebox.showinfo("Login Success", f"Welcome, {username}! Login successful!")
+        if row:
+            # Show a message box with a welcome message
+            messagebox.showinfo("Login Success", f"Welcome, {username}! Login successful!")
 
-                # Play a welcome audio
-                if self.check_wifi_connection():
-                    # If there is an internet connection, use pygame
-                    self.play_audio(username)
-                    self.open_welcome_window(username)
-                    self.withdraw()
-                    
-                else:
-                    # If there is no internet connection, use pyttsx3
-                    self.play_welcome_audio_pyttsx3(username)
+            # Play a welcome audio
+            if self.check_wifi_connection():
+                # If there is an internet connection, use pygame
+                self.play_audio(username)
+                # self.open_welcome_window(username)
+                self.withdraw()
 
-                    # Open a new window
-                    self.open_welcome_window(username)
-                    self.withdraw()
-               
             else:
-                messagebox.showerror("Login Error", "Invalid username or password")
+                # If there is no internet connection, use pyttsx3
+                self.play_welcome_audio_pyttsx3(username)
 
-        except mysql.connector.Error as err:
-            messagebox.showerror("Database Error", f"Error: {err}")
-        finally:
-            # Close the connection
-            cursor.close()
-            db.close()
+            # Open a new window
+            self.open_welcome_window(username)
+            self.withdraw()
+        else:
+            messagebox.showerror("Login Error", "Invalid username or password")
 
+        conn.close()
         
 
     

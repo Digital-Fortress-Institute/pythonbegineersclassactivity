@@ -3,11 +3,17 @@ import tkinter as tk
 from tkinter import *
 from PIL import ImageTk, Image
 from tkinter import messagebox
+import pyttsx3
 from PIL import Image, ImageTk
 import sqlite3
+from gtts import gTTS
+import pygame
 from tkinter import simpledialog
+import os
+import subprocess
+import time
 import random
-import mysql.connector
+# import function
 
 
 
@@ -252,12 +258,6 @@ class NewWindow(tk.Toplevel):
         # Generate a random 10-digit account number
         account_number = str(random.randint(1000000000, 9999999999))
 
-        # Generate a random 11-digit BVN
-        bvn = str(random.randint(10000000000, 99999999999))
-
-        # Use the username as the account name
-        account_name = username
-
         # Initialize account balance
         if reference_code:
             # Ask for initial deposit amount
@@ -269,61 +269,51 @@ class NewWindow(tk.Toplevel):
             initial_deposit_entry.pack()
 
             def ok_callback():
-                try:
-                    initial_deposit = int(initial_deposit_entry.get())
-                    if 500000 <= initial_deposit <= 1000000:
-                        account_balance = initial_deposit
-                        initial_deposit_dialog.destroy()
-                        # Register user
-                        self.register_user(username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code, bvn, account_name)
-                    else:
-                        messagebox.showerror("Error", "Initial deposit amount must be between 500,000 and 1,000,000")
-                except ValueError:
-                    messagebox.showerror("Error", "Invalid deposit amount. Please enter a numeric value.")
+                initial_deposit = int(initial_deposit_entry.get())
+                if 500000 <= initial_deposit <= 1000000:
+                    account_balance = initial_deposit
+                    initial_deposit_dialog.destroy()
+                    # Register user
+                    self.register_user(username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code)
+                else:
+                    messagebox.showerror("Error", "Initial deposit amount must be between 500,000 and 1,000,000")
 
             tk.Button(initial_deposit_dialog, text="OK", command=ok_callback).pack()
         else:
             account_balance = 100000
-            self.register_user(username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code, bvn, account_name)
+            self.register_user(username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, None)
 
-    def register_user(self, username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code, bvn, account_name):
-        # Connect to MySQL database
-        db = mysql.connector.connect(
-            host="localhost",
-            user="tele",
-            password="telesql19",
-            database="new_database"
-        )
-        cursor = db.cursor()
+    def register_user(self, username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code):
+        # Connect to database
+        conn = sqlite3.connect("users.db")
+        c = conn.cursor()
 
-        # Create the users table if it doesn't exist
-        cursor.execute("""
-            CREATE TABLE IF NOT EXISTS users (
-                username VARCHAR(150) NOT NULL,
-                password VARCHAR(150) NOT NULL,
-                dob DATE NOT NULL,
-                secret_question VARCHAR(150) NOT NULL,
-                secret_answer VARCHAR(150) NOT NULL,
-                transaction_pin VARCHAR(150) NOT NULL,
-                account_number VARCHAR(150) NOT NULL,
-                account_balance INT NOT NULL
-                reference_code VARCHAR(150),
-                bvn VARCHAR(150) NOT NULL,
-                account_name VARCHAR(150) NOT NULL
-            );
-        """)
+        # Create table if it doesn't exist
+        c.execute("""CREATE TABLE IF NOT EXISTS users (
+            username TEXT PRIMARY KEY,
+            password TEXT,
+            dob DATE,
+            secret_question TEXT,
+            secret_answer TEXT,
+            transaction_pin TEXT,
+            account_number TEXT,
+            account_balance INTEGER,
+            reference_code TEXT
+        )""")
 
-        # Insert user data into the database
-        query = "INSERT INTO users (username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code, bvn, account_name) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        values = (username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code, bvn, account_name)
-        cursor.execute(query, values)
+        # Check if username already exists
+        c.execute("SELECT 1 FROM users WHERE username=?", (username,))
+        if c.fetchone():
+            messagebox.showerror("Error", "Username already exists. Please choose a different username.")
+            conn.close()
+            return
 
-        # Commit changes and close the connection
-        db.commit()
-        cursor.close()
-        db.close()
+        # Insert new user
+        c.execute("INSERT INTO users (username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code) VALUES (?,?,?,?,?,?,?,?,?)", (username, password, dob, secret_question, secret_answer, transaction_pin, account_number, account_balance, reference_code))
+        conn.commit()
+        conn.close()
 
-        messagebox.showinfo("Registration Successful", "Your account has been created successfully!")
+        messagebox.showinfo("Success", "User registered successfully!")
         self.username_entry.delete(0, tk.END)
         self.password_entry.delete(0, tk.END)
         self.dob_entry.delete(0, tk.END)
@@ -337,7 +327,6 @@ class NewWindow(tk.Toplevel):
             self.master.state('normal')
         self.withdraw()
         self.master.deiconify()
-
 
     
 
