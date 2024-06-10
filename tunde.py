@@ -466,8 +466,11 @@ root.mainloop()
 
 
 
-from tkinter import *
-root= Tk()
-root.title("GUI")
-root.geometry("1000x500")
-label=Label(root,text= "First name")
+# from tkinter import *
+# root= Tk()
+# root.title("GUI")
+# root.geometry("1000x500")
+# label=Label(root,text= "First name")
+
+
+# polymorphysm
