@@ -1,11 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
-from PIL import ImageTk, Image
 import sqlite3
 from sideBar import Sidebar
 from tkinter import messagebox
 import mysql.connector
-from PIL import Image, ImageTk
+from PIL import ImageTk, Image
 
 class WelcomeWindow:
     def __init__(self, master, username):
@@ -19,7 +18,7 @@ class WelcomeWindow:
         screen_height = self.new_window.winfo_screenheight()
 
         # Assuming the taskbar's height is 40 pixels (you may need to adjust this)
-        taskbar_height = 40
+        taskbar_height = 50
 
         # Set the window's geometry to the screen's width and height, minus the taskbar's height
         self.new_window.geometry(f"{screen_width}x{screen_height - taskbar_height}")
@@ -35,13 +34,14 @@ class WelcomeWindow:
         self.logoside = Image.open('ps2.png')
         self.logoside = self.logoside.resize((80, 80), resample=Image.LANCZOS)  # Resize the image to 50x50 pixels using Lanczos resampling
         logos = ImageTk.PhotoImage(self.logoside)
-        self.logo_label = tk.Label(self.lgn_frame, image=logos, width='80', height="80", bg='#3B3C36')
+        self.logo_label = tk.Label(self.new_window, image=logos, width='80', height="80", bg='#3B3C36')
         self.logo_label.image = logos
         self.logo_label.__reduce__()
-        self.logo_label.place(x=40, y=0)
+        self.logo_label.place(x=70, y=0)
 
         label = tk.Label(self.lgn_frame, text=f"Welcome {username}, to our simple and easy to use bank app!", font=('yu gothic ui', 16, 'bold'), bg='#FF4F00', fg='white')
         label.place(x=900, y=36)
+        self.lgn_frame.after(5000, label.destroy)
 
         style = ttk.Style()
         style.configure("Big.TButton", font=("Arial", 17), foreground="red", background="black")
@@ -75,14 +75,14 @@ your other PTP account""", style="Big.TButton", command=self.show_fund_account_d
         image = Image.open("drop.png")
 
         # Resize the image
-        image = image.resize((20, 20), resample=Image.LANCZOS)  # Replace (20, 20) with your desired size
+        image = image.resize((40, 40), resample=Image.LANCZOS)  # Replace (20, 20) with your desired size
 
         # Convert the image to a PhotoImage
         dropdown_image = ImageTk.PhotoImage(image)
 
         self.sidebar_button = tk.Button(self.lgn_frame, image=dropdown_image, compound="top", font=("yu gothic ui", 4, "bold"), width=70, bd=0, bg='red', cursor='hand2', activebackground='#3B3C36', fg='white', command=self.toggle_sidebar)
         self.sidebar_button.image = dropdown_image
-        self.sidebar_button.place(x=320, y=0)
+        self.sidebar_button.place(x=10, y=0)
 
         self.settings = tk.StringVar()
         self.settings.set("Settings")  # default value
