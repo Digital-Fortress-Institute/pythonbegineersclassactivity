@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+from PIL import ImageTk, Image
 import sqlite3
 from sideBar import Sidebar
 from tkinter import messagebox
@@ -357,7 +358,7 @@ your other PTP account""", style="Big.TButton", command=self.show_fund_account_d
         self.master.deiconify()
 
 
-root = tk.Tk()
-welcome_window = WelcomeWindow(root, "username")
-root.withdraw()  # Hide the root window
-welcome_window.new_window.mainloop()
+# root = tk.Tk()
+# welcome_window = WelcomeWindow(root, "username")
+# root.withdraw()  # Hide the root window
+# welcome_window.new_window.mainloop()

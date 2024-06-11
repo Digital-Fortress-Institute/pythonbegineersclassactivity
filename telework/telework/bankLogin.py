@@ -26,7 +26,7 @@ class LoginForm(tk.Tk):
         screen_height = self.winfo_screenheight()
 
         # Assuming the taskbar's height is 40 pixels (you may need to adjust this)
-        taskbar_height = 40
+        taskbar_height = 20
 
         # Set the window's geometry to the screen's width and height, minus the taskbar's height
         self.geometry(f"{screen_width}x{screen_height - taskbar_height}")
